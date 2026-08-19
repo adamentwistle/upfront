@@ -46,6 +46,14 @@ Then run `/config`, choose **Output style**, and pick **Upfront**. It takes effe
 
 For one project only, copy `output-styles/upfront.md` into that project's `.claude/output-styles/`.
 
+**Not in the picker?** You installed into a config directory that session isn't using. Claude Code reads `$CLAUDE_CONFIG_DIR` when it's set and falls back to `~/.claude`, so a custom or second profile needs its own copy:
+
+```sh
+echo "${CLAUDE_CONFIG_DIR:-$HOME/.claude}"   # where this session actually looks
+```
+
+`install.sh` uses that same rule. Override it with `CLAUDE_DIR=/path ./install.sh`.
+
 ## What it doesn't do
 
 **Ask for depth and brevity switches off.** "Explain it properly", "walk me through it", "why did that happen" - those get everything: each decision, number, threshold, condition, and risk, in the same plain words. Being brief there is the failure.
