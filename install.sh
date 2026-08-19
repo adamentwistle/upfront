@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install the Status First output style into ~/.claude/output-styles/.
+# Install the Upfront output style into ~/.claude/output-styles/.
 #
 # Usage:
 #   ./install.sh              install into $HOME/.claude
@@ -10,14 +10,14 @@ set -euo pipefail
 
 CLAUDE_DIR="${CLAUDE_DIR:-$HOME/.claude}"
 SELF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SRC="$SELF_DIR/output-styles/status-first.md"
+SRC="$SELF_DIR/output-styles/upfront.md"
 
 [ -f "$SRC" ] || { echo "run this from a complete checkout: $SRC is missing" >&2; exit 1; }
 
 mkdir -p "$CLAUDE_DIR/output-styles"
-cp "$SRC" "$CLAUDE_DIR/output-styles/status-first.md"
+cp "$SRC" "$CLAUDE_DIR/output-styles/upfront.md"
 
-echo "installed: $CLAUDE_DIR/output-styles/status-first.md"
+echo "installed: $CLAUDE_DIR/output-styles/upfront.md"
 echo
-echo "Activate it: run /config, choose Output style, pick Status First."
+echo "Activate it: run /config, choose Output style, pick Upfront."
 echo "It takes effect after /clear or the next session."
